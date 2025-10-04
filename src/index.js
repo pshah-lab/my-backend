@@ -6,9 +6,27 @@ dotenv.config({
   path: "./env",
 });
 
+const startServer = async () => {
+  try {
+    await connectDB();
 
+    const PORT = process.env.PORT || 8000;
 
-connectDB();
+    // Save the server instance
+    const server = app.listen(PORT, () => {
+      console.log(`🚀 Server is running at port: ${PORT}`);
+    });
+
+    // Attach error listener to server, not app
+    server.on("error", (error) => {
+      console.error("❌ Server error:", error);
+    });
+  } catch (error) {
+    console.error("❌ Server connection failed:", error);
+  }
+};
+
+startServer();
 
 /*
 import express from "express";
