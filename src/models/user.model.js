@@ -60,6 +60,8 @@ userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
+// node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
