@@ -40,7 +40,7 @@ const userSchema = Schema(
     ],
     password: {
       type: String,
-      require: [true, "password i srequired"],
+      required: [true, "password is required"],
     },
     refreshToken: {
       type: String,
